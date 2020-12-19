@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<%
+    parameters = {
+        sitename: 'Tab-loid',
+        title: 'Home',
+        description: 'タブとアンカーリンクのテスト',
+        author: 'アルム＝バンド',
+        copyright: 2020,
+        themecolor: '#ccc'
+    }
+-%>
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no,address=no,email=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title><%= parameters.title %> - <%= parameters.sitename %></title>
+    <meta name="description" content="<%= parameters.description %>">
+    <meta name="author" content="<%= parameters.author %>">
+
+    <link href="./apple-touch-icon.png" rel="apple-touch-icon">
+    <meta name="theme-color" content="<%= parameters.themecolor %>">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link href="./css/index.css" rel="stylesheet">
+</head>

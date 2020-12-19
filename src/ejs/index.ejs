@@ -1,0 +1,71 @@
+<%- include('partial/_head') %>
+<body>
+<%- include('partial/_header') %>
+<main class="l-main">
+    <section class="container py-5">
+        <h1><i class="fas fa-fw fa-pills mr-2" aria-hidden="true"></i><%= parameters.title %></h1>
+        <p><%= parameters.description %></p>
+    </section>
+    <section class="container pb-5">
+        <h2>タブとアンカーリンク</h2>
+<%
+const tabData = [
+    {
+        id: 'lorem',
+        name: 'Lorem Ipsum',
+        linkHead: 'いぷー！',
+    },
+    {
+        id: 'etaoin',
+        name: 'etaoin shrdlu',
+        linkHead: 'SHRDLU, Toy of Man\'s Designing',
+    },
+    {
+        id: 'hujiko',
+        name: 'ふじこ',
+        linkHead: 'キーボードの上から三段目と四段目を二本指で左からダーすると',
+    }
+];
+-%>
+        <div class="tabWrapper py-3">
+            <ul class="nav nav-tabs nav-fill" role="tablist">
+<%
+for (let i = 0; i < tabData.length; i++) {
+    let activeClass = '';
+    let flag = 'false';
+    if (i === 0) {
+        activeClass = ' active';
+        flag = 'true';
+    }
+-%>
+                <li class="nav-item" role="presentation">
+                    <a href="#<%= tabData[i].id %>" id="tab<%= tabData[i].id.charAt(0).toUpperCase()%><%= tabData[i].id.slice(1) %>" class="nav-link<%= activeClass %>" role="tab" data-toggle="tab" aria-controls="<%= tabData[i].id %>" aria-selected="<%= flag %>"><%= tabData[i].name %></a>
+                </li>
+<%
+}
+-%>
+            </ul>
+        </div>
+        <div id="tabloid" class="tab-content">
+<%
+for (let i = 0; i < tabData.length; i++) {
+    let activeClass = '';
+    if (i === 0) {
+        activeClass = ' show active';
+    }
+-%>
+            <div id="<%= tabData[i].id %>" class="tab-pane<%= activeClass %>" role="tabpanel" aria-labelledby="<%= tabData[i].id %>-tab">
+<%- include(`./tab/_${tabData[i].id}`) %>
+                <h3 class="my-3"><%= tabData[i].linkHead %></h3>
+                <p>他のタブへのアンカーリンクです。<a href="index.html#<%= tabData[((i + 1) % tabData.length)].id %>" class="tabloid_link mx-2" data-anchor="<%= tabData[((i + 1) % tabData.length)].id %>"><i class="fas fa-fw fa-pills" aria-hidden="true"></i>こちら</a>をクリックしてみてください。</p>
+            </div>
+<%
+}
+-%>
+        </div>
+    </section>
+</main>
+<%- include('partial/_footer') %>
+<%- include('partial/_js_loader') %>
+</body>
+</html>
